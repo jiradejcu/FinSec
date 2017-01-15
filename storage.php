@@ -6,7 +6,7 @@ define('SCOPES', implode(' ', array(
 )));
 define('SPREADSHEET_ID', '17ksPCxUo5W1RE4iE-Jf46AIOYK7EimPQh3Jed64BhmU');
 
-function getService($sheet = 'Main') {
+function getService() {
 	$client = new Google_Client();
 	$client->setApplicationName(APPLICATION_NAME);
 	$client->setScopes(SCOPES);
@@ -19,12 +19,17 @@ function getService($sheet = 'Main') {
 function addRecord($message, $amount) {
 	$service = getService();
 
-	$response = $service->spreadsheets_values->get(SPREADSHEET_ID, 'Main!A:A');
-	$values = $response->getValues();
+	$values = [
+		[$message, $amount]
+	];
 
-	if (!empty($values)) {
-		foreach ($values as $row) {
-			echo $row[0] . "\n";
-		}
-	}
+	$body = new Google_Service_Sheets_ValueRange(array(
+		'values' => $values
+	));
+
+	$params = array(
+		'valueInputOption' => 'USER_ENTERED'
+	);
+
+	$service->spreadsheets_values->append(SPREADSHEET_ID, 'Main!A1', $body, $params);
 }
