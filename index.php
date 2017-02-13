@@ -19,7 +19,10 @@ if (!empty($events['events'])) {
 				switch ($message['type']) {
 					case 'text':
 						$response = parseMessage($message['text'], $event['source']['userId']);
-						$bot->replyText($event['replyToken'], $response);
+
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($response, ['1', '2']);
+						$bot->replyMessage($event['replyToken'], $textMessageBuilder);
+
 						break;
 					default:
 						error_log("Unsupported message type: " . $message['type']);
