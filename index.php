@@ -18,11 +18,16 @@ if (!empty($events['events'])) {
 				$message = $event['message'];
 				switch ($message['type']) {
 					case 'text':
-						$response = parseMessage($message['text'], $event['source']['userId']);
+						$message = parseMessage($message['text'], $event['source']['userId']);
 
-						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($response, ['1', '2']);
-						$bot->replyMessage($event['replyToken'], $textMessageBuilder);
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+						$response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
+						if ($response->isSucceeded()) {
+							echo 'Success';
+							return;
+						}
 
+						echo $response->getHTTPStatus . ' ' . $response->getRawBody();
 						break;
 					default:
 						error_log("Unsupported message type: " . $message['type']);
