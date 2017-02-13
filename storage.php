@@ -16,11 +16,12 @@ function getService() {
 	return $service;
 }
 
-function addRecord($message, $amount) {
+function addRecord($message, $amount, $actor) {
 	$service = getService();
+	$time = date('Y-m-d H:i:s');
 
 	$values = [
-		[$message, $amount]
+		[$time, $actor, $message, $amount]
 	];
 
 	$body = new Google_Service_Sheets_ValueRange(array(

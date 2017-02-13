@@ -18,7 +18,7 @@ if (!empty($events['events'])) {
 				$message = $event['message'];
 				switch ($message['type']) {
 					case 'text':
-						$response = parseMessage($message['text']);
+						$response = parseMessage($message['text'], $event['source']['userId']);
 						$bot->replyText($event['replyToken'], $response);
 						break;
 					default:
