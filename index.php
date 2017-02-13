@@ -20,7 +20,7 @@ if (!empty($events['events'])) {
 					case 'text':
 						$message = parseMessage($message['text'], $event['source']['userId']);
 
-						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message, ['1', '2']);
 						$response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 						if ($response->isSucceeded()) {
 							error_log('Success');
