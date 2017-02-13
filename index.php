@@ -42,10 +42,10 @@ if (!empty($events['events'])) {
 
 						return;
 					}
-				}
 
-				error_log('Fail ' . $response->getRawBody());
-				break;
+					error_log('Fail ' . $response->getRawBody());
+					break;
+				}
 			default:
 				error_log("Unsupported event type: " . $event['type']);
 				break;

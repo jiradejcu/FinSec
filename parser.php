@@ -17,8 +17,7 @@ function parseMessage($message, $actor) {
 }
 
 function parseImage($image, $actor) {
-	addImage($image);
+	addImage($image, $actor);
 
-//	return sprintf("เพิ่มรูปประกอบ");
-	return $image;
+	return sprintf("เพิ่มรูปประกอบ");
 }
