@@ -36,5 +36,14 @@ function addRecord($message, $amount, $actor) {
 }
 
 function addImage($image, $actor) {
+	$tmpfilePath = tempnam($_SERVER['DOCUMENT_ROOT'] . '/image', '');
+	unlink($tmpfilePath);
+	$filePath = $tmpfilePath . '.jpg';
+	$filename = basename($filePath);
 
+	$fh = fopen($filePath, 'x');
+	fwrite($fh, $image);
+	fclose($fh);
+
+	return $filename;
 }
