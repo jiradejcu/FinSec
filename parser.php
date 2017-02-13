@@ -7,7 +7,7 @@ function parseMessage($message) {
 
 	if (count($messages) == 2) {
 		addRecord(trim($messages[0]), trim($messages[1]));
-		$responseMessage = printf("เพิ่มรายการ '%s' จำนวนเงิน %d บาท", trim($messages[0]), trim($messages[1]));
+		$responseMessage = sprintf("เพิ่มรายการ '%s' จำนวนเงิน %d บาท", trim($messages[0]), trim($messages[1]));
 	}
 
 	return $responseMessage;
