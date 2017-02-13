@@ -23,11 +23,12 @@ if (!empty($events['events'])) {
 						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message);
 						$response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 						if ($response->isSucceeded()) {
-							echo 'Success';
+							error_log('Success');
+
 							return;
 						}
 
-						echo $response->getHTTPStatus . ' ' . $response->getRawBody();
+						error_log('Fail ' . $response->getHTTPStatus . ' ' . $response->getRawBody());
 						break;
 					default:
 						error_log("Unsupported message type: " . $message['type']);
