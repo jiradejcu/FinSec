@@ -20,7 +20,7 @@ if (!empty($events['events'])) {
 					case 'text':
 						$message = parseMessage($message['text'], $event['source']['userId']);
 
-						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message, ["1", "2"]);
+						$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($message, "1", "2");
 						$response = $bot->replyMessage($event['replyToken'], $textMessageBuilder);
 						if ($response->isSucceeded()) {
 							error_log('Success');
@@ -28,7 +28,7 @@ if (!empty($events['events'])) {
 							return;
 						}
 
-						error_log('Fail ' . $response->getHTTPStatus . ' ' . $response->getRawBody());
+						error_log('Fail ' . $response->getRawBody());
 						break;
 					default:
 						error_log("Unsupported message type: " . $message['type']);
