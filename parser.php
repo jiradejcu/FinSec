@@ -9,7 +9,7 @@ function parseMessage($message, $actor) {
 		$item = trim($messages[0]);
 		$amount = (int) trim($messages[1]);
 
-//		addRecord($item, $amount, $actor);
+		addRecord($item, $amount, $actor);
 		$responseMessage = sprintf("เพิ่มรายการ '%s' จำนวนเงิน %d บาท", $item, $amount);
 	}
 
