@@ -15,3 +15,10 @@ function parseMessage($message, $actor) {
 
 	return $responseMessage;
 }
+
+function parseImage($image, $actor) {
+	addImage($image);
+
+//	return sprintf("เพิ่มรูปประกอบ");
+	return $image;
+}

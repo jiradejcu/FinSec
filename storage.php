@@ -34,3 +34,7 @@ function addRecord($message, $amount, $actor) {
 
 	$service->spreadsheets_values->append(SPREADSHEET_ID, 'Main!A1', $body, $params);
 }
+
+function addImage($image) {
+
+}
