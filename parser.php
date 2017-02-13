@@ -3,7 +3,12 @@ require_once 'storage.php';
 
 function parseMessage($message) {
 	$messages = explode(',', $message);
-	addRecord(trim($messages[0]), trim($messages[1]));
+	$responseMessage = "ว่าไงนะ?";
 
-	return $message;
+	if (count($messages) == 2) {
+		addRecord(trim($messages[0]), trim($messages[1]));
+		$responseMessage = printf("เพิ่มรายการ '%s' จำนวนเงิน %d บาท", trim($messages[0]), trim($messages[1]));
+	}
+
+	return $responseMessage;
 }

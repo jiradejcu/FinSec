@@ -20,6 +20,7 @@ if (!empty($events['events'])) {
 					case 'text':
 						$response = parseMessage($message['text']);
 						$bot->replyText($event['replyToken'], $response);
+						$bot->replyText($event['replyToken'], "จบนะ");
 						break;
 					default:
 						error_log("Unsupported message type: " . $message['type']);
